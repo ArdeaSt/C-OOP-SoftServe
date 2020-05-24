@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
+
 
 namespace HomeWork4
 {
@@ -121,7 +121,20 @@ namespace HomeWork4
             {
                 m.Output();
             }
-
+            // Find and output information about Persons with the same names (use ==)
+ Person[] people = list.ToArray();
+            Person temp = null;
+            for (int i = 0; i < people.Length-1; i++)
+            {
+                temp = people[i];
+                for (int j =i+ 1; j < people.Length; j++)
+                {
+                    if (temp==people[j])
+                    {
+                        Console.WriteLine(temp.ToString()+ "is same person with"+ people[j].ToString()); 
+                    }
+                }
+            }
             Console.ReadLine();
         }
     }
