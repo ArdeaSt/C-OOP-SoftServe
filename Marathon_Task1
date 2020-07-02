@@ -1,0 +1,46 @@
+ class MyAccessModifiers
+    {
+        private int birthYear;
+        protected string personalInfo;
+        private protected string IdNumber;
+
+        public MyAccessModifiers(){}
+
+        public MyAccessModifiers(int year, string persinfo, string idnumber)
+        {
+            birthYear = year;
+            personalInfo = persinfo;
+            IdNumber = idnumber;
+        }
+
+        public static byte averageMiddleAge = 50;
+        internal string Name { get; set; }
+        public string NickName { get; internal set; }
+        protected  internal void HasLivedHalfOfLife() { }
+        public static bool operator ==(MyAccessModifiers one, MyAccessModifiers two)
+        {
+            return (one.Age == two.Age & one.Name == two.Name & one.personalInfo == two.personalInfo);
+        }
+
+        public static bool operator !=(MyAccessModifiers one, MyAccessModifiers two)
+        {
+            return !(one.Age == two.Age & one.Name == two.Name & one.personalInfo == two.personalInfo);
+        }
+
+        public int Age
+        {
+            get { return (DateTime.Today.Year- birthYear); }
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is MyAccessModifiers)) return false;
+            MyAccessModifiers m = (MyAccessModifiers) obj;
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return personalInfo.GetHashCode() ^
+                   Name.GetHashCode() ^
+                   Age.GetHashCode();
+        }
