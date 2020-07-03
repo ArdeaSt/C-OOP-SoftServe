@@ -5,15 +5,15 @@ class DisposePatternImplementer : CloseableResource, IDisposable
        ~DisposePatternImplementer()
         {
            
-             Console.WriteLine("Disposing by GC");
-             Close();
+            
+            
             Dispose(false);
             
            
         }
         public void Dispose()
         {
-          
+             
             Dispose(true);
             GC.SuppressFinalize(this);
            
@@ -28,9 +28,14 @@ class DisposePatternImplementer : CloseableResource, IDisposable
                 if (disposing)
                 {
                     Console.WriteLine("Disposing by developer");
-                   Close();
+                   
                 }
-                  
+                
+                else
+                {
+                   Console.WriteLine("Disposing by GC"); 
+                }
+                 Close(); 
             }
             
             disposed = true;
